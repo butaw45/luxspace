@@ -3,7 +3,7 @@
         <div class="container mx-auto py-5">
             <div class="flex flex-stretch items-center">
                 <div class="w-56 items-center flex">
-                    <img src="images/content/logo.png" alt="Luxspace | Fulfill your house with beautiful furniture" />
+                    <img src="{{ url('/frontend/images/content/logo.png') }}" alt="Luxspace | Fulfill your house with beautiful furniture" />
                 </div>
                 <div class="w-full"></div>
                 <div class="w-auto">
