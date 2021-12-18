@@ -18,4 +18,8 @@ class FrontendController extends Controller
     {
         return view('pages.frontend.cart');
     }
+    public function success(Request $request)
+    {
+        return view('pages.frontend.success');
+    }
 }
