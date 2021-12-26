@@ -10,13 +10,13 @@ module.exports = {
     ],
 
     theme: {
-        colors: {
-            gray: colors.gray,
-            blue: colors.blue,
-        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+            colors: {
+                gray: colors.gray,
+                blue: colors.blue,
             },
         },
     },
