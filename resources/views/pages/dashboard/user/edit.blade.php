@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Product &raquo; {{ $item->name }} &raquo; Edit
+            User &raquo; {{ $item->name }} &raquo; Edit
         </h2>
     </x-slot>
 
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="{{ route('dashboard.product.update', $item->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.user.update', $item->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
@@ -36,30 +36,36 @@
                             <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Name
                             </label>
-                            <input value="{{ old('name') ?? $item->name }}" name="name" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Product Name">
+                            <input value="{{ old('name') ?? $item->name }}" name="name" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="User Name">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Description
+                                Email
                             </label>
-                            <textarea name="description" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">{!! old('description') ?? $item->description !!}</textarea>
+                            <input value="{{ old('email') ?? $item->email }}" name="email" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="email" placeholder="Product Email">
                         </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Price
+                                Roles
                             </label>
-                            <input value="{{ old('price') ?? $item->price }}" name="price" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="Product Price">
+                            <select name="roles" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="{{ $item->roles }}">{{ $item->roles }}</option>
+                                <option disabled>------------</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="USER">USER</option>
+                            </select>
                         </div>
                     </div>
+
 
                     <div class="w-full px-3">
                         <div class="flex flex-wrap -mx-3 mb-6">
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg">
-                            Update Product
+                            Update User
                         </button>
                         </div>
                     </div>
@@ -68,8 +74,4 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('description');
-    </script>
 </x-app-layout>
