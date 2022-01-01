@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 @endif
-                <form action="{{ route('dashboard.product.update', $item->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('dashboard.transaction.update', $item->id) }}" class="w-full" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
@@ -36,30 +36,25 @@
                             <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Name
                             </label>
-                            <input value="{{ old('name') ?? $item->name }}" name="name" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Product Name">
+                            <select name="status" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="{{ $item->status }}">{{ $item->status }}</option>
+                                <option disabled>------------</option>
+                                <option value="PENDING">PENDING</option>
+                                <option value="SUCCESS">SUCCESS</option>
+                                <option value="CHALLENGE">CHALLENGE</option>
+                                <option value="FAILED">FAILED</option>
+                                <option value="SHIPPING">SHIPPING</option>
+                                <option value="SHIPPED">SHIPPED</option>
+
+                            </select>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Description
-                            </label>
-                            <textarea name="description" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">{!! old('description') ?? $item->description !!}</textarea>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label for="" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Price
-                            </label>
-                            <input value="{{ old('price') ?? $item->price }}" name="price" class="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" placeholder="Product Price">
-                        </div>
-                    </div>
+
 
                     <div class="w-full px-3">
                         <div class="flex flex-wrap -mx-3 mb-6">
                         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg">
-                            Update Product
+                            Update Transaction
                         </button>
                         </div>
                     </div>
@@ -68,8 +63,5 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.ckeditor.com/4.17.1/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('description');
-    </script>
+
 </x-app-layout>
