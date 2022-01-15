@@ -91,12 +91,15 @@
             </div>
             <div class="px-4 w-2/12">
                 <div class="text-center">
-                <button
-                    data-delete-item="1"
-                    class="text-red-600 border-none focus:outline-none px-3 py-1"
-                >
-                    X
+                 <form action="{{ route('cart-delete', $item->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button
+                        class="text-red-600 border-none focus:outline-none px-3 py-1"
+                    >
+                        X
                 </button>
+                 </form>
                 </div>
             </div>
             </div>
@@ -104,7 +107,7 @@
           @empty
             <p id="cart-empty" class="text-center py-8">
                 Ooops... Cart is empty
-                <a href="details.html" class="underline">Shop Now</a>
+                <a href="{{ route('index') }}" class="underline">Shop Now</a>
             </p>
           @endforelse
 
