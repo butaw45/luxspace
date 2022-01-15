@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -19,6 +21,15 @@ class FrontendController extends Controller
         $recommendations = Product::with(['galleries'])->inRandomOrder()->limit(4)->get();
 
         return view('pages.frontend.details', compact('product', 'recommendations'));
+    }
+    public function cartAdd(Request $request, $id)
+    {
+        Cart::create([
+            'users_id' => Auth::user()->id,
+            'products_id' => $id
+        ]);
+
+        return redirect('cart');
     }
     public function cart(Request $request)
     {
