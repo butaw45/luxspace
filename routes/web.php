@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProductGalleryController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\MyTransactionController;
+use App\Http\Controllers\ProductGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
 Route::middleware(['auth:sanctum', 'verified'])->name('dashboard.')->prefix('dashboard')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    Route::resource('my-transaction', MyTransactionController::class)->shallow()->only([
+        'index', 'show'
+       ]);
 
     Route::middleware(['admin'])->group(function () {
         Route::resource('product', ProductController::class);
