@@ -116,7 +116,8 @@
         </div>
         <div class="w-full md:px-4 md:w-4/12" id="shipping-detail">
           <div class="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
-            <form action="success.html">
+            <form action="{{ route('checkout') }}" method="POST">
+                @csrf
               <div class="flex flex-start mb-6">
                 <h3 class="text-2xl">Shipping Details</h3>
               </div>
@@ -127,6 +128,7 @@
                 >
                 <input
                   data-input
+                  name="name"
                   type="text"
                   id="complete-name"
                   class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
@@ -138,6 +140,7 @@
                 <label for="email" class="text-sm mb-2">Email Address</label>
                 <input
                   data-input
+                  name="email"
                   type="email"
                   id="email"
                   class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
@@ -149,6 +152,7 @@
                 <label for="address" class="text-sm mb-2">Address</label>
                 <input
                   data-input
+                  name="address"
                   type="text"
                   id="address"
                   class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
@@ -162,6 +166,7 @@
                 >
                 <input
                   data-input
+                  name="phone"
                   type="tel"
                   id="phone-number"
                   class="border-gray-200 border rounded-lg px-4 py-2 bg-white text-sm focus:border-blue-200 focus:outline-none"
